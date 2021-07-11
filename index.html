@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+  
+<body>
+
+  <div class="container mt-5">
+    
+    <div class="row h-100 justify-content-center align-items-center">
+      
+      <form class="col-6" id='theForm'>
+
+        <h2>Cadastro de Informações pessoais</h2>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nome</label>
+          <input name='funcionario' type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Senha</label>
+          <input name='senha' type="password" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Cargo</label>
+          <input name='cargo' type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Matrícula</label>
+          <input name='matricula' type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Empresa</label>
+          <input name='empresa' type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput2">CPF</label>
+          <input name='cpf' type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput3">Nome da mãe</label>
+          <input name='mae' type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="formGroupExampleInput4">Secretaria</label>
+          <input name='secretaria' type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div> -->
+
+        <div class="form-group">
+          <label for="formGroupExampleInput5">Lotação</label>
+          <input name='lotacao' type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div>
+
+        <hr>
+        <h2>Cadastro de Email(s)</h2>
+
+        <!-- Adicionar na página de vocês daqui pra baixo dentro do mesmo formulario pra submeter pro back -->
+        <label for="formGroupExampleInput6">Preencha aqui seu(s) email(s) para atendimento exclusivo na prefeitura: </label>
+        <div id="inputFormRow">
+            <div class="input-group mb-3">
+                <input type="text" name="email0" class="form-control m-input" placeholder="email" autocomplete="off">
+                <div class="input-group-append">                
+                    <button id="removeRow" type="button" class="btn btn-danger">Remover</button>
+                </div>
+            </div>
+
+            <label for="formGroupExampleInput">Selecione abaixo o tipo de email</label>
+            <div class="input-group mb-3">
+              <input type="text" name="tipoemail0" class="form-control m-input" autocomplete="off" list="listTipo">
+              <datalist id="listTipo">
+                <option value="Pessoal">  
+                <option value="Corporativo">
+              </datalist>
+            </div>
+            <hr>
+
+            <!-- <label for="formGroupExampleInput7">Tipo de email </label>
+            <select id="form-select0" class="form-select mb-3" aria-label="Default select example">
+              <option value="1" selected>Pessoal</option>
+              <option value="2">Corporativo</option>
+            </select>
+
+            <hr> -->
+
+        </div>
+
+        <div id="newRow"></div>
+        <button id="addRow" type="button" class="btn btn-success text-al">Adicionar email</button>
+
+        <!-- botão para submeter o formulario -->
+        <div class='row h-100 justify-content-center align-items-center mt-3'>
+          <button id="removeRow" type="submit" class="btn btn-danger btn-lg">Enviar</button>
+        </div>
+      </form>  
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- script com a lógica pra add automaticamente novas linhas pro usuario informar emails -->
+  <script type="text/javascript">
+    var i = 0
+    var j = 0
+    // add row
+    $("#addRow").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html += '<input type="text" name="email' + ++i + '" class="form-control m-input" placeholder="email" autocomplete="off">';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow" type="button" class="btn btn-danger">Remover</button>';
+        html += '</div>';
+        html += '</div>';
+
+        // html += '<label for="formGroupExampleInput7">Tipo de email </label>'
+        // html += '<select id="form-select' + ++j + '" class="form-select mb-3" aria-label="Default select example">'
+        // html += '<option value="1" selected>Pessoal</option>'
+        // html += '<option value="2">Corporativo</option>'
+        // html += '</select>'
+        // html += '<hr>'
+
+        html += '<label for="formGroupExampleInput">Selecione abaixo o tipo de email</label>'
+        html += '<div class="input-group mb-3">'
+        html += '<input type="text" name="tipoemail' + ++j + '" class="form-control m-input" autocomplete="off" list="listTipo">'
+        html += '<datalist id="listTipo">'
+        html += '<option value="Pessoal">' 
+        html += '<option value="Corporativo">'
+        html += '</datalist>'
+        html += '</div>'
+        html += '<hr>'
+        
+
+        $('#newRow').append(html);
+    });
+
+    // remove row
+    $(document).on('click', '#removeRow', function () {
+        $(this).closest('#inputFormRow').remove();
+    });
+
+
+    // this is the id of the form
+    $("#theForm").submit(function(e) {
+
+      e.preventDefault(); // avoid to execute the actual submit of the form.
+
+      var form = $(this);
+
+      var url = 'http://localhost:8080/cadastra-dados-formulario';
+
+      var dataJson = JSON.stringify( $(form).serializeArray() ); //  <-----------
+
+      //console.log( dataJson );
+
+      $.ajax({
+          type: "POST",
+          contentType : "application/json",
+          url: url,
+          data: dataJson,
+          dataType : 'json',
+          /*success: function(data)
+          {
+              console.log('tudo certo ');
+              //$(location).attr('href',"http://localhost");
+          },
+          error: function (data) {
+                console.log('An error occurred.');
+                console.log(dataJson);
+               // $(location).attr('href',"http://localhost");
+          },*/
+          
+        });
+
+        document.getElementById("theForm").reset();
+    });
+
+    
+
+  </script>
+  
+</body>
+</html>
